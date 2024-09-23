@@ -1,0 +1,146 @@
+<div class="container-component">
+  <!-- Checkbox para controlar el estado del  menú -->
+  <input type="checkbox" id="menuToggle" [(ngModel)]="showFilters">
+  <!-- Menú lateral colapsable con botón adjunto -->
+  <nav class="collapse-menu">
+    <!-- Botón de apertura/cierre del menú -->
+    <label for="menuToggle" class="menu-button" style="width: 30px ;height: 30px">
+
+      <img *ngIf="!showFilters" src="assets/img/simbolo-menor-que.png" height="30" width="30" style="transform: rotate(180deg)" alt="Descripción de la imagen">
+      <img *ngIf="showFilters" src="assets/img/simbolo-menor-que.png" height="30" width="30" alt="Descripción de la imagen">
+    </label>
+
+    <!-- Menu Content -->
+    <div class="filters">
+      <!--Menu title-->
+      <div class="filters-tittle">
+        <h2>Filtros de Consulta</h2>
+      </div>
+      <div class="filters-message">
+        <img src="assets/img/ic-contextual-help.png" height="40" width="40" alt="Descripción de la imagen">
+        <p>Recuerde que puede filtrar la busqueda por uno o mas parametros</p>
+      </div>
+      <form class="filters-form-box">
+        <!-- Filtros-->
+        <div class="form-filters-container">
+          <!-- Primera Columna -->
+          <div class="form-group">
+            <div class="form-item-container">
+              <label for="centroAdministrativo">Centro Administrativo:<span class="required-asterisk">*</span></label>
+              <select id="centroAdministrativo" class="form-item-dropdown">
+                <option *ngFor="let centro of centrosAdministrativos" class="option-style">{{ centro }}</option>
+              </select>
+            </div>
+            <div class="form-item-container">
+              <label for="codigoProyecto">Código Proyecto:</label>
+              <input id="codigoProyecto" class="form-item-inputtext" type="text">
+            </div>
+            <div class="form-item-container">
+
+              <label for="nitFinanciador">Nit Financiador:</label>
+              <input id="nitFinanciador" class="form-item-inputtext" type="text">
+            </div>
+            <div class="form-item-container">
+              <label for="nivel">Nivel:</label>
+              <select id="nivel" class="form-item-dropdown" [(ngModel)]="selectedNivel">
+                <option value="" disabled hidden>Selecciona un nivel</option>
+                <option *ngFor="let nivel of niveles" [value]="nivel.identificador"
+                        class="option-style">{{nivel.nombre}}</option>
+
+              </select>
+            </div>
+            <div class="form-item-container">
+              <label for="palabraClave">Palabra Clave:</label>
+              <input id="palabraClave" class="form-item-inputtext" type="text">
+            </div>
+            <div class="form-item-container">
+              <label for="estado">Estado:</label>
+              <select id="estado" class="form-item-dropdown">
+                <option *ngFor="let estado of estados" class="option-style">{{ estado }}</option>
+              </select>
+            </div>
+            <div class="form-item-container">
+              <label for="claseProyecto">Clase de Proyecto:</label>
+              <select id="claseProyecto" class="form-item-dropdown">
+                <option *ngFor="let clase of clasesProyecto" class="option-style">{{ clase }}</option>
+              </select>
+            </div>
+            <div class="form-item-container">
+              <label for="tipoProyecto">Tipo de Proyecto:</label>
+              <select id="tipoProyecto" class="form-item-dropdown">
+                <option *ngFor="let tipo of tiposProyecto" class="option-style">{{ tipo }}</option>
+              </select>
+            </div>
+
+            <!-- Botones-->
+            <div class="form-filter-buttons">
+              <button type="submit" class="btn-submit">Consultar</button>
+              <button type="button" class="btn-submit" (click)="limpiarFormulario()">Limpiar</button>
+            </div>
+
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="content" style="width: 100%"  >
+    <!-- Tabla de proyectos -->
+    <div class="table-container">
+      <div class="table-container-title">
+        <div class="table-container-title-text">
+          Proyectos
+        </div>
+        <p style="padding-top:15px ">Proyectos encontrados: {{ projects.length }}</p>
+      </div>
+      <div class="table-container-buttons">
+        <button type="button" class="btn-table-primary">Ver proyecto</button>
+        <button type="button" class="btn-table-primary">Inicio formal</button>
+        <button type="button" class="btn-table-primary">Compromisos</button>
+        <button type="button" class="btn-table-primary">Etapas</button>
+        <button type="button" class="btn-table-primary">Ver cliente</button>
+        <button type="button" class="btn-table-primary">Historico</button>
+        <button type="button" class="btn-table-primary">Cambiar responsable</button>
+        <button type="button" class="btn-table-primary">Ver historial de cambios responsable</button>
+        <button type="button" class="btn-table-primary">Cambiar estado</button>
+        <button type="button" class="btn-table-primary">Ver historial de cambios de estado</button>
+      </div>
+      <table class="projects-table">
+        <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre del Proyecto</th>
+          <th>Nivel</th>
+          <th>Proyecto Vinculado</th>
+          <th>Convocatoria</th>
+          <th>Responsable</th>
+          <th>Coordinador</th>
+          <th>Tipo de Proyecto</th>
+          <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let project of projects">
+          <td>{{ project.codigo }}</td>
+          <td>{{ project.nombreProyecto }}</td>
+          <td>{{ project.nivel }}</td>
+          <td>{{ project.proyectoVinculado }}</td>
+          <td>{{ project.convocatoria }}</td>
+          <td>{{ project.responsable }}</td>
+          <td>{{ project.coordinador }}</td>
+          <td>{{ project.tipoProyecto }}</td>
+          <td>{{ project.estado }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer">
+      &copy; Universidad de Antioquia
+    </div>
+
+  </div>
+
+</div>
+

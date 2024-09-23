@@ -1,0 +1,284 @@
+/* Estilos del menú */
+.collapse-menu {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  width: 400px;
+  height: 100%;
+  background-color: #f9f9f9;
+  color: white;
+  transform: translateX(-400px); /* Oculta el menú fuera de la pantalla */
+  transition: transform 0.3s ease;
+  padding-top: 50px; /* Espacio para los elementos */
+  max-height: 100vh; /* Limita la altura máxima al tamaño de la ventana del navegador */
+  border-right: 1px solid #000; /* Agrega un borde a la izquierda del menú */
+}
+
+
+/* Ocultar checkbox */
+#menuToggle {
+  display: none;
+}
+
+/* Botón del menú */
+.menu-button {
+  position: fixed;
+  top: 0px;
+  right: -40px !important; /* Posiciona el botón fuera del borde del menú */
+  background-color: #f9f9f9;
+  color: black;
+  padding: 4.5px;
+  cursor: pointer;
+  z-index: 1000;
+  border-radius: 0 5px 20px 0; /* Borde redondeado solo en el lado derecho */
+  border: 1px solid #000; /* Agrega un borde al botón */
+}
+
+/* Cambia el estado del menú cuando el checkbox está marcado */
+#menuToggle:checked ~ .collapse-menu {
+  transform: translateX(0); /* Mueve el menú dentro de la pantalla */
+}
+
+/* Hace que el botón del menú se mueva junto con el menú */
+#menuToggle:checked ~ .collapse-menu .menu-button {
+  right: -40px; /* Mantiene el botón en la misma posición cuando el menú está expandido */
+}
+
+/* Contenido principal */
+.content {
+  margin-left: 0;
+  padding: 20px;
+  transition: margin-left 0.3s ease; /* Transición suave */
+}
+
+/* Ajusta el contenido cuando el menú está desplegado */
+#menuToggle:checked ~ .content {
+  margin-left: 400px; /* Empuja el contenido a la derecha cuando el menú se despliega */
+}
+
+/* Estilos de ejemplo para el contenido */
+.content h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.content p {
+  font-size: 18px;
+  color: #666;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* CSS DATA */
+
+
+
+
+.container-component {
+  width: 100%; /* 100% del ancho de la pantalla menos 60px (30px de margen a cada lado) */
+  display: flex;
+}
+.content-container {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  width: auto;
+
+}
+.filter-box {
+  width: auto;
+  max-width: 200px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0); /* Initially show the sidebar */
+}
+
+.table-box
+{
+  background: #f3f3f3;
+
+}
+.collapse-button{
+  position: absolute;
+}
+
+
+
+/* Botón de filtro */
+.btn-filter {
+  max-width: 100%;
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.btn-filter:hover {
+  background-color: #367B48;
+}
+.btn-filter-text-container{
+}
+.btn-filter-text{
+  color: white;
+  font-weight: bold;
+  letter-spacing: 2px; /* Ajusta este valor a tus necesidades */
+}
+
+
+/* Filtros */
+.filters {
+  margin-top: -30px;
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+.filters-tittle{
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px; /* Ajusta este valor a tus necesidades */
+  color: #566e4f;
+
+}
+.filters-message{
+  padding-top: 7px;
+  display: flex;
+  background: #f8f6eb;
+  border: 3px solid #f0e68c;
+  border-radius: 10px;
+  color: #b7aa79;
+  font-size: 13px;
+  font-weight: 500;
+
+}
+.form-filters-container {
+  display: flex;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.form-item-container{
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3px;
+}
+.form-item-dropdown {
+  max-width: 100%;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.option-style {
+  font-size: 16px; /* Ajusta el tamaño del texto */
+  padding: 10px 0; /* Ajusta el espacio vertical entre las opciones */
+}
+
+
+.form-item-inputtext {
+  box-sizing: border-box; /* Asegura que el ancho y la altura incluyan el contenido, el relleno y el borde */
+  max-width: 100%;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+/* Botones de filtro */
+.form-filter-buttons {
+  padding-top: 20px;
+  display: flex;
+  justify-content: flex-start; /* Alinea los elementos al inicio del contenedor */
+  gap: 15px;
+}
+
+.btn-submit {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Tabla de proyectos */
+.table-container {
+  margin-top: 50px;
+}
+.table-container-title {
+  padding: 20px 0px;
+  border: none;
+  cursor: pointer;
+}
+.table-container-title-text {
+  color: #566e4f;
+  font-size: 24px;
+  letter-spacing: 2px; /* Ajusta este valor a tus necesidades */
+}
+
+.projects-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.projects-table th, .projects-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.projects-table th {
+  background-color: #4b8690;
+  color: white;
+  font-weight: 500;
+}
+/* Filter */
+.form-columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-group {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.form-group:last-child {
+  margin-right: 0;
+}
+
+.table-container-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 20px; /* Margen superior */
+  margin-bottom: 20px; /* Margen inferior */
+}
+.btn-table-primary {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+}
+.btn-table-primary:hover {
+  background-color: #0056b3;
+}
+
+/*****************FOOTER*****************/
+.footer {
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px 0;
+}
